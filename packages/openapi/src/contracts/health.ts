@@ -1,9 +1,9 @@
-import { initContract } from "@ts-rest/core";
-import { z } from "zod";
-import { ZHealthResponse } from "@boilerplate/zod";
-import { getSecurityMetadata } from "@/utils.js";
+import { initContract } from "@ts-rest/core"
+import { z } from "zod"
+import { ZHealthResponse } from "@resumify/zod"
+import { getSecurityMetadata } from "@/utils.js"
 
-const c = initContract();
+const c = initContract()
 
 export const healthContract = c.router({
   getHealth: {
@@ -15,4 +15,4 @@ export const healthContract = c.router({
       200: ZHealthResponse,
     },
   },
-});
+})

@@ -1,26 +1,26 @@
-import { extendZodWithOpenApi } from "@anatine/zod-openapi";
-import { z } from "zod";
+import { extendZodWithOpenApi } from "@anatine/zod-openapi"
+import { z } from "zod"
 
-extendZodWithOpenApi(z);
-import { generateOpenApi } from "@ts-rest/open-api";
+extendZodWithOpenApi(z)
+import { generateOpenApi } from "@ts-rest/open-api"
 
-import { apiContract } from "./contracts/index.js";
+import { apiContract } from "./contracts/index.js"
 
 type SecurityRequirementObject = {
-  [key: string]: string[];
-};
+  [key: string]: string[]
+}
 
 export type OperationMapper = NonNullable<
   Parameters<typeof generateOpenApi>[2]
->["operationMapper"];
+>["operationMapper"]
 
 const hasSecurity = (
   metadata: unknown
 ): metadata is { openApiSecurity: SecurityRequirementObject[] } => {
   return (
     !!metadata && typeof metadata === "object" && "openApiSecurity" in metadata
-  );
-};
+  )
+}
 
 const operationMapper: OperationMapper = (operation, appRoute) => ({
   ...operation,
@@ -29,7 +29,7 @@ const operationMapper: OperationMapper = (operation, appRoute) => ({
         security: appRoute.metadata.openApiSecurity,
       }
     : {}),
-});
+})
 
 export const OpenAPI = Object.assign(
   generateOpenApi(
@@ -38,8 +38,8 @@ export const OpenAPI = Object.assign(
       openapi: "3.0.2",
       info: {
         version: "1.0.0",
-        title: "Boilerplate REST API - Documentation",
-        description: "Boilerplate REST API - Documentation",
+        title: "Resumify REST API - Documentation",
+        description: "Resumify REST API - Documentation",
       },
       servers: [
         {
@@ -69,4 +69,4 @@ export const OpenAPI = Object.assign(
       },
     },
   }
-);
+)
