@@ -89,7 +89,7 @@ func LoadConfig() (*Config, error) {
 	}
 
 	// Override service name and environment from primary config
-	mainConfig.Observability.ServiceName = "boilerplate"
+	mainConfig.Observability.ServiceName = "resumify"
 	mainConfig.Observability.Environment = mainConfig.Primary.Env
 
 	// Validate observability config

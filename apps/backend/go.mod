@@ -1,4 +1,4 @@
-module github.com/sriniously/go-boilerplate
+module github.com/sriniously/go-resumify
 
 go 1.24.5
 
