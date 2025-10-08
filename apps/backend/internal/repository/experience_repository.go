@@ -8,8 +8,8 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5"
-	"github.com/sriniously/go-resumify/internal/model/experience"
-	"github.com/sriniously/go-resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/model/experience"
+	"github.com/recreatedev/Resumify/internal/server"
 )
 
 type ExperienceRepository struct {

@@ -1,4 +1,4 @@
-module github.com/sriniously/go-resumify
+module github.com/recreatedev/Resumify
 
 go 1.24.5
 

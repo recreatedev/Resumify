@@ -2,7 +2,7 @@ package section
 
 import (
 	"github.com/google/uuid"
-	"github.com/sriniously/go-resumify/internal/model"
+	"github.com/recreatedev/Resumify/internal/model"
 )
 
 // ResumeSection represents a section within a resume

@@ -4,9 +4,9 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/sriniously/go-resumify/internal/config"
-	"github.com/sriniously/go-resumify/internal/database"
-	"github.com/sriniously/go-resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/config"
+	"github.com/recreatedev/Resumify/internal/database"
+	"github.com/recreatedev/Resumify/internal/server"
 )
 
 // CreateTestServer creates a server instance for testing

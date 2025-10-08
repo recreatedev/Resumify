@@ -5,10 +5,10 @@ import (
 
 	"github.com/labstack/echo/v4"
 	echoMiddleware "github.com/labstack/echo/v4/middleware"
-	"github.com/sriniously/go-resumify/internal/handler"
-	"github.com/sriniously/go-resumify/internal/middleware"
-	"github.com/sriniously/go-resumify/internal/server"
-	"github.com/sriniously/go-resumify/internal/service"
+	"github.com/recreatedev/Resumify/internal/handler"
+	"github.com/recreatedev/Resumify/internal/middleware"
+	"github.com/recreatedev/Resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/service"
 	"golang.org/x/time/rate"
 )
 

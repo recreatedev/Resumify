@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"github.com/sriniously/go-resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/server"
 )
 
 type RateLimitMiddleware struct {

@@ -8,8 +8,8 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5"
-	"github.com/sriniously/go-resumify/internal/model/education"
-	"github.com/sriniously/go-resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/model/education"
+	"github.com/recreatedev/Resumify/internal/server"
 )
 
 type EducationRepository struct {

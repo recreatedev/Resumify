@@ -1,9 +1,9 @@
 package service
 
 import (
-	"github.com/sriniously/go-resumify/internal/lib/job"
-	"github.com/sriniously/go-resumify/internal/repository"
-	"github.com/sriniously/go-resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/lib/job"
+	"github.com/recreatedev/Resumify/internal/repository"
+	"github.com/recreatedev/Resumify/internal/server"
 )
 
 type Services struct {

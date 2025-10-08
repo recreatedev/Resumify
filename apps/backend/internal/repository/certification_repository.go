@@ -8,8 +8,8 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5"
-	"github.com/sriniously/go-resumify/internal/model/certification"
-	"github.com/sriniously/go-resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/model/certification"
+	"github.com/recreatedev/Resumify/internal/server"
 )
 
 type CertificationRepository struct {

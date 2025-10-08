@@ -6,9 +6,9 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/newrelic/go-agent/v3/integrations/nrpkgerrors"
 	"github.com/newrelic/go-agent/v3/newrelic"
-	"github.com/sriniously/go-resumify/internal/middleware"
-	"github.com/sriniously/go-resumify/internal/server"
-	"github.com/sriniously/go-resumify/internal/validation"
+	"github.com/recreatedev/Resumify/internal/middleware"
+	"github.com/recreatedev/Resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/validation"
 )
 
 // Handler provides base functionality for all handlers

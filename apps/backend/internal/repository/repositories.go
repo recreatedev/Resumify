@@ -1,6 +1,6 @@
 package repository
 
-import "github.com/sriniously/go-resumify/internal/server"
+import "github.com/recreatedev/Resumify/internal/server"
 
 type Repositories struct {
 	Resume        *ResumeRepository

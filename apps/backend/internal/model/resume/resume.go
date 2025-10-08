@@ -1,7 +1,7 @@
 package resume
 
 import (
-	"github.com/sriniously/go-resumify/internal/model"
+	"github.com/recreatedev/Resumify/internal/model"
 )
 
 // Resume represents a user's resume

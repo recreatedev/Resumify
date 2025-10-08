@@ -2,7 +2,7 @@ package project
 
 import (
 	"github.com/google/uuid"
-	"github.com/sriniously/go-resumify/internal/model"
+	"github.com/recreatedev/Resumify/internal/model"
 )
 
 // Project represents project entries

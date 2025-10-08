@@ -1,13 +1,13 @@
 package composite
 
 import (
-	"github.com/sriniously/go-resumify/internal/model/certification"
-	"github.com/sriniously/go-resumify/internal/model/education"
-	"github.com/sriniously/go-resumify/internal/model/experience"
-	"github.com/sriniously/go-resumify/internal/model/project"
-	"github.com/sriniously/go-resumify/internal/model/resume"
-	"github.com/sriniously/go-resumify/internal/model/section"
-	"github.com/sriniously/go-resumify/internal/model/skill"
+	"github.com/recreatedev/Resumify/internal/model/certification"
+	"github.com/recreatedev/Resumify/internal/model/education"
+	"github.com/recreatedev/Resumify/internal/model/experience"
+	"github.com/recreatedev/Resumify/internal/model/project"
+	"github.com/recreatedev/Resumify/internal/model/resume"
+	"github.com/recreatedev/Resumify/internal/model/section"
+	"github.com/recreatedev/Resumify/internal/model/skill"
 )
 
 // ResumeWithSections represents a complete resume with all its sections and items

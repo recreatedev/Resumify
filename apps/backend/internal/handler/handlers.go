@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"github.com/sriniously/go-resumify/internal/server"
-	"github.com/sriniously/go-resumify/internal/service"
+	"github.com/recreatedev/Resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/service"
 )
 
 type Handlers struct {

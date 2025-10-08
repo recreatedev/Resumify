@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/sriniously/go-resumify/internal/handler"
+	"github.com/recreatedev/Resumify/internal/handler"
 
 	"github.com/labstack/echo/v4"
 )

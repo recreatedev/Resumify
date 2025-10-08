@@ -7,8 +7,8 @@ import (
 
 	"github.com/hibiken/asynq"
 	"github.com/rs/zerolog"
-	"github.com/sriniously/go-resumify/internal/config"
-	"github.com/sriniously/go-resumify/internal/lib/email"
+	"github.com/recreatedev/Resumify/internal/config"
+	"github.com/recreatedev/Resumify/internal/lib/email"
 )
 
 var emailClient *email.Client

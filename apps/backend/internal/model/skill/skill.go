@@ -2,7 +2,7 @@ package skill
 
 import (
 	"github.com/google/uuid"
-	"github.com/sriniously/go-resumify/internal/model"
+	"github.com/recreatedev/Resumify/internal/model"
 )
 
 // Skill represents skill entries

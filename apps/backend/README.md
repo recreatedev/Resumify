@@ -1,6 +1,6 @@
-# Go Resumify Backend
+# Resumify Backend API
 
-A production-ready Go backend service built with Echo framework, featuring clean architecture, comprehensive middleware, and modern DevOps practices.
+A production-ready Go backend service for the Resumify application, built with Echo framework, featuring clean architecture, comprehensive middleware, and modern DevOps practices.
 
 ## Architecture Overview
 
@@ -15,7 +15,7 @@ backend/
 │   ├── handler/              # HTTP request handlers
 │   ├── service/              # Business logic layer
 │   ├── repository/           # Data access layer
-│   ├── model/                # Domain models
+│   ├── model/                # Domain models (Resume, Education, etc.)
 │   ├── middleware/           # HTTP middleware
 │   ├── lib/                  # Shared libraries
 │   └── validation/           # Request validation
@@ -25,6 +25,14 @@ backend/
 ```
 
 ## Features
+
+### Resume Management
+
+- **CRUD Operations**: Create, read, update, delete resumes
+- **Section Management**: Control resume sections and their visibility
+- **Content Types**: Education, experience, projects, skills, certifications
+- **Ordering**: Custom ordering for all resume sections
+- **User Isolation**: Secure multi-tenant data access
 
 ### Core Framework
 
@@ -100,13 +108,19 @@ cp .env.example .env
 # Configure your environment variables
 ```
 
-3. Run migrations:
+3. Start required services:
+
+```bash
+docker compose up -d
+```
+
+4. Run migrations:
 
 ```bash
 task migrations:up
 ```
 
-4. Start the server:
+5. Start the server:
 
 ```bash
 task run
@@ -114,7 +128,38 @@ task run
 
 ## Configuration
 
-Configuration is managed through environment variables with the `BOILERPLATE_` prefix:
+Configuration is managed through environment variables with the `RESUMIFY_` prefix:
+
+### Required Variables
+
+```bash
+# Primary Configuration
+RESUMIFY_PRIMARY_ENV=development
+
+# Server Configuration
+RESUMIFY_SERVER_PORT=8080
+RESUMIFY_SERVER_READ_TIMEOUT=15
+RESUMIFY_SERVER_WRITE_TIMEOUT=15
+RESUMIFY_SERVER_IDLE_TIMEOUT=60
+RESUMIFY_SERVER_CORS_ALLOWED_ORIGINS=http://localhost:5173
+
+# Database Configuration
+RESUMIFY_DATABASE_HOST=localhost
+RESUMIFY_DATABASE_PORT=5432
+RESUMIFY_DATABASE_USER=postgres
+RESUMIFY_DATABASE_PASSWORD=postgres
+RESUMIFY_DATABASE_NAME=resumify
+RESUMIFY_DATABASE_SSL_MODE=disable
+
+# Authentication
+RESUMIFY_AUTH_SECRET_KEY=your-secret-key
+
+# Redis Configuration
+RESUMIFY_REDIS_ADDRESS=localhost:6379
+
+# Email Service
+RESUMIFY_INTEGRATION_RESEND_API_KEY=your-resend-key
+```
 
 ## Development
 
@@ -128,6 +173,8 @@ task migrations:new name=X   # Create new migration
 task migrations:up           # Apply migrations
 task migrations:down         # Rollback last migration
 task tidy                    # Format and tidy dependencies
+task docker:up               # Start Docker services
+task docker:down             # Stop Docker services
 ```
 
 ### Project Structure
@@ -163,7 +210,7 @@ Data access layer that:
 
 Domain entities that:
 
-- Define core business objects
+- Define core business objects (Resume, Education, Experience, etc.)
 - Include validation rules
 - Remain database-agnostic
 
@@ -186,6 +233,38 @@ Cross-cutting concerns:
 go test ./...
 ```
 
+#### Integration Tests
+
+```bash
+go test -tags=integration ./...
+```
+
+## API Endpoints
+
+### Resume Management
+
+- `GET /api/v1/resumes` - List user's resumes
+- `POST /api/v1/resumes` - Create new resume
+- `GET /api/v1/resumes/{id}` - Get resume details
+- `PUT /api/v1/resumes/{id}` - Update resume
+- `DELETE /api/v1/resumes/{id}` - Delete resume
+
+### Resume Sections
+
+- `GET /api/v1/resumes/{id}/sections` - Get resume sections
+- `POST /api/v1/resumes/{id}/sections` - Create section
+- `PUT /api/v1/resumes/{id}/sections/{sectionId}` - Update section
+- `DELETE /api/v1/resumes/{id}/sections/{sectionId}` - Delete section
+
+### Content Management
+
+- `GET /api/v1/resumes/{id}/education` - Get education entries
+- `POST /api/v1/resumes/{id}/education` - Add education
+- `PUT /api/v1/education/{id}` - Update education
+- `DELETE /api/v1/education/{id}` - Delete education
+
+Similar endpoints for experience, projects, skills, and certifications.
+
 ## Logging
 
 Structured logging with Zerolog:
@@ -193,8 +272,9 @@ Structured logging with Zerolog:
 ```go
 log.Info().
     Str("user_id", userID).
-    Str("action", "login").
-    Msg("User logged in successfully")
+    Str("resume_id", resumeID).
+    Str("action", "create_resume").
+    Msg("Resume created successfully")
 ```
 
 Log levels:

@@ -1,29 +1,33 @@
-# Go Resumify
+# Resumify
 
-A production-ready monorepo template for building scalable web applications with Go backend and TypeScript frontend. Built with modern best practices, clean architecture, and comprehensive tooling.
+A modern resume builder application that allows users to create, customize, and manage professional resumes with ease. Built with a Go backend and TypeScript frontend, featuring real-time editing, multiple themes, and PDF export capabilities.
 
 ## Features
 
-- **Monorepo Structure**: Organized with Turborepo for efficient builds and development
-- **Go Backend**: High-performance REST API with Echo framework
-- **Authentication**: Integrated Clerk SDK for secure user management
-- **Database**: PostgreSQL with migrations and connection pooling
-- **Background Jobs**: Redis-based async job processing with Asynq
-- **Observability**: New Relic APM integration and structured logging
-- **Email Service**: Transactional emails with Resend and HTML templates
-- **Testing**: Comprehensive test infrastructure with Testcontainers
-- **API Documentation**: OpenAPI/Swagger specification
-- **Security**: Rate limiting, CORS, secure headers, and JWT validation
+- **Resume Management**: Create, edit, and organize multiple resumes
+- **Real-time Editing**: Live preview with instant updates
+- **Multiple Themes**: Professional, modern, classic, and creative templates
+- **Section Control**: Customize which sections to include and their order
+- **Rich Content**: Support for education, experience, projects, skills, and certifications
+- **PDF Export**: Generate professional PDF resumes
+- **User Authentication**: Secure user management with Clerk
+- **Responsive Design**: Works seamlessly on desktop and mobile
+- **Monorepo Structure**: Organized with Turborepo for efficient development
 
 ## Project Structure
 
 ```
-go-resumify/
-├── apps/backend/          # Go backend application
-├── packages/         # Frontend packages (React, Vue, etc.)
-├── package.json      # Monorepo configuration
-├── turbo.json        # Turborepo configuration
-└── README.md         # This file
+resumify/
+├── apps/
+│   ├── backend/          # Go backend API
+│   └── frontend/         # React frontend application
+├── packages/             # Shared packages
+│   ├── emails/          # Email templates
+│   ├── openapi/         # API contracts
+│   └── zod/             # Validation schemas
+├── package.json         # Monorepo configuration
+├── turbo.json           # Turborepo configuration
+└── README.md            # This file
 ```
 
 ## Quick Start
@@ -40,8 +44,8 @@ go-resumify/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/sriniously/go-resumify.git
-cd go-resumify
+git clone https://github.com/recreatedev/Resumify.git
+cd Resumify
 ```
 
 2. Install dependencies:
@@ -62,7 +66,12 @@ cp apps/backend/.env.example apps/backend/.env
 # Edit apps/backend/.env with your configuration
 ```
 
-4. Start the database and Redis.
+4. Start the database and Redis:
+
+```bash
+cd apps/backend
+docker compose up -d
+```
 
 5. Run database migrations:
 
@@ -82,7 +91,7 @@ cd apps/backend
 task run
 ```
 
-The API will be available at `http://localhost:8080`
+The API will be available at `http://localhost:8080` and the frontend at `http://localhost:5173`
 
 ## Development
 
@@ -105,26 +114,44 @@ bun lint               # Lint all packages
 
 ### Environment Variables
 
-The backend uses environment variables prefixed with `BOILERPLATE_`. Key variables include:
+The backend uses environment variables prefixed with `RESUMIFY_`. Key variables include:
 
-- `BOILERPLATE_DATABASE_*` - PostgreSQL connection settings
-- `BOILERPLATE_SERVER_*` - Server configuration
-- `BOILERPLATE_AUTH_*` - Authentication settings
-- `BOILERPLATE_REDIS_*` - Redis connection
-- `BOILERPLATE_EMAIL_*` - Email service configuration
-- `BOILERPLATE_OBSERVABILITY_*` - Monitoring settings
+- `RESUMIFY_DATABASE_*` - PostgreSQL connection settings
+- `RESUMIFY_SERVER_*` - Server configuration
+- `RESUMIFY_AUTH_*` - Authentication settings
+- `RESUMIFY_REDIS_*` - Redis connection
+- `RESUMIFY_INTEGRATION_*` - Third-party service configuration
+- `RESUMIFY_OBSERVABILITY_*` - Monitoring settings
 
 See `apps/backend/.env.example` for a complete list.
 
 ## Architecture
 
-This resumify follows clean architecture principles:
+This application follows clean architecture principles:
 
 - **Handlers**: HTTP request/response handling
 - **Services**: Business logic implementation
 - **Repositories**: Data access layer
-- **Models**: Domain entities
+- **Models**: Domain entities (Resume, Education, Experience, etc.)
 - **Infrastructure**: External services (database, cache, email)
+
+## Resume Features
+
+### Resume Sections
+
+- **Personal Information**: Name, contact details, summary
+- **Education**: Institution, degree, dates, achievements
+- **Experience**: Company, position, responsibilities, dates
+- **Projects**: Project details, technologies, links
+- **Skills**: Technical and soft skills with proficiency levels
+- **Certifications**: Professional certifications and credentials
+
+### Customization Options
+
+- **Themes**: Multiple professional themes
+- **Section Ordering**: Drag-and-drop section reordering
+- **Visibility Control**: Show/hide sections
+- **Content Formatting**: Rich text editing capabilities
 
 ## Testing
 
@@ -140,7 +167,7 @@ go test -cover ./...
 go test -tags=integration ./...
 ```
 
-### Production Considerations
+## Production Considerations
 
 1. Use environment-specific configuration
 2. Enable production logging levels
@@ -149,6 +176,9 @@ go test -tags=integration ./...
 5. Use a reverse proxy (nginx, Caddy)
 6. Enable rate limiting and security headers
 7. Configure CORS for your domains
+8. Set up automated backups
+9. Implement CDN for static assets
+10. Configure SSL/TLS certificates
 
 ## Contributing
 

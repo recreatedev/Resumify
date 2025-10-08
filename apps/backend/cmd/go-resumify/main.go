@@ -8,14 +8,14 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/sriniously/go-resumify/internal/config"
-	"github.com/sriniously/go-resumify/internal/database"
-	"github.com/sriniously/go-resumify/internal/handler"
-	"github.com/sriniously/go-resumify/internal/logger"
-	"github.com/sriniously/go-resumify/internal/repository"
-	"github.com/sriniously/go-resumify/internal/router"
-	"github.com/sriniously/go-resumify/internal/server"
-	"github.com/sriniously/go-resumify/internal/service"
+	"github.com/recreatedev/Resumify/internal/config"
+	"github.com/recreatedev/Resumify/internal/database"
+	"github.com/recreatedev/Resumify/internal/handler"
+	"github.com/recreatedev/Resumify/internal/logger"
+	"github.com/recreatedev/Resumify/internal/repository"
+	"github.com/recreatedev/Resumify/internal/router"
+	"github.com/recreatedev/Resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/service"
 )
 
 const DefaultContextTimeout = 30

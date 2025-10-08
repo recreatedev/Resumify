@@ -7,9 +7,9 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
-	"github.com/sriniously/go-resumify/internal/errs"
-	"github.com/sriniously/go-resumify/internal/server"
-	"github.com/sriniously/go-resumify/internal/sqlerr"
+	"github.com/recreatedev/Resumify/internal/errs"
+	"github.com/recreatedev/Resumify/internal/server"
+	"github.com/recreatedev/Resumify/internal/sqlerr"
 )
 
 type GlobalMiddlewares struct {
