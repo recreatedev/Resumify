@@ -63,7 +63,20 @@ func LoadConfig() (*Config, error) {
 	k := koanf.New(".")
 
 	err := k.Load(env.Provider("RESUMIFY_", ".", func(s string) string {
-		return strings.ToLower(strings.TrimPrefix(s, "RESUMIFY_"))
+		key := strings.ToLower(strings.TrimPrefix(s, "RESUMIFY_"))
+		// Convert underscores to dots for nested configuration sections
+		// e.g., observability_logging_level -> observability.logging.level
+		// but observability_service_name -> observability.service_name
+		if strings.HasPrefix(key, "observability_") {
+			// Convert all underscores to dots for observability
+			return strings.ReplaceAll(key, "_", ".")
+		}
+		// For other sections, convert only the first underscore
+		parts := strings.SplitN(key, "_", 2)
+		if len(parts) == 2 {
+			return parts[0] + "." + parts[1]
+		}
+		return key
 	}), nil)
 	if err != nil {
 		logger.Fatal().Err(err).Msg("could not load initial env variables")

@@ -25,10 +25,3 @@ func RequestID() echo.MiddlewareFunc {
 		}
 	}
 }
-
-func GetRequestID(c echo.Context) string {
-	if requestID, ok := c.Get(RequestIDKey).(string); ok {
-		return requestID
-	}
-	return ""
-}

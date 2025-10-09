@@ -5,9 +5,9 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/newrelic/go-agent/v3/newrelic"
-	"github.com/rs/zerolog"
 	"github.com/recreatedev/Resumify/internal/logger"
 	"github.com/recreatedev/Resumify/internal/server"
+	"github.com/rs/zerolog"
 )
 
 const (
@@ -83,6 +83,13 @@ func (ce *ContextEnhancer) extractUserRole(c echo.Context) string {
 func GetUserID(c echo.Context) string {
 	if userID, ok := c.Get(UserIDKey).(string); ok {
 		return userID
+	}
+	return ""
+}
+
+func GetRequestID(c echo.Context) string {
+	if requestID, ok := c.Get("request_id").(string); ok && requestID != "" {
+		return requestID
 	}
 	return ""
 }

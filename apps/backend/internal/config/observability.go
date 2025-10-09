@@ -6,30 +6,30 @@ import (
 )
 
 type ObservabilityConfig struct {
-	ServiceName  string             `koanf:"service_name" validate:"required"`
-	Environment  string             `koanf:"environment" validate:"required"`
-	Logging      LoggingConfig      `koanf:"logging" validate:"required"`
-	NewRelic     NewRelicConfig     `koanf:"new_relic" validate:"required"`
-	HealthChecks HealthChecksConfig `koanf:"health_checks" validate:"required"`
+	ServiceName  string             `koanf:"service.name"`
+	Environment  string             `koanf:"environment"`
+	Logging      LoggingConfig      `koanf:"logging"`
+	NewRelic     NewRelicConfig     `koanf:"new.relic"`
+	HealthChecks HealthChecksConfig `koanf:"health.checks"`
 }
 
 type LoggingConfig struct {
-	Level              string        `koanf:"level" validate:"required"`
-	Format             string        `koanf:"format" validate:"required"`
-	SlowQueryThreshold time.Duration `koanf:"slow_query_threshold"`
+	Level              string        `koanf:"level"`
+	Format             string        `koanf:"format"`
+	SlowQueryThreshold time.Duration `koanf:"slow.query.threshold"`
 }
 
 type NewRelicConfig struct {
-	LicenseKey                string `koanf:"license_key" validate:"required"`
-	AppLogForwardingEnabled   bool   `koanf:"app_log_forwarding_enabled"`
-	DistributedTracingEnabled bool   `koanf:"distributed_tracing_enabled"`
-	DebugLogging              bool   `koanf:"debug_logging"`
+	LicenseKey                string `koanf:"license.key"`
+	AppLogForwardingEnabled   bool   `koanf:"app.log.forwarding.enabled"`
+	DistributedTracingEnabled bool   `koanf:"distributed.tracing.enabled"`
+	DebugLogging              bool   `koanf:"debug.logging"`
 }
 
 type HealthChecksConfig struct {
 	Enabled  bool          `koanf:"enabled"`
-	Interval time.Duration `koanf:"interval" validate:"min=1s"`
-	Timeout  time.Duration `koanf:"timeout" validate:"min=1s"`
+	Interval time.Duration `koanf:"interval"`
+	Timeout  time.Duration `koanf:"timeout"`
 	Checks   []string      `koanf:"checks"`
 }
 
